@@ -22,13 +22,13 @@ let board = document.getElementsByClassName('row board tile');
 for (let i = 0; i < 48; i++) {
     let tile = document.createElement('div');
     $(tile).attr("class", "col-1 b-item");
-    // $(tile).attr('id', "tile" + i);
+    $(tile).attr('id', "tile" + i);
     board[0].appendChild(tile);
 }
 for (let i = 0; i < 24; i++) {
     let tile = document.createElement('div');
     $(tile).attr("class", "col-1 b-tile-item");
-    // $(tile).attr('id', "tile" + i);
+    $(tile).attr('id', "tile" + i);
     board[0].appendChild(tile);
 }
 
