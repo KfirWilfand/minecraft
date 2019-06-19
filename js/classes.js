@@ -1,7 +1,5 @@
-class WorldBoard{
-    constructor(tiles,weight,height){
-
-    }
+class WorldBoard {
+  constructor(tiles, weight, height) {}
 }
 
 class Tile {
@@ -9,7 +7,8 @@ class Tile {
     this.type = type;
     this.url = url;
   }
-  getHtmlElement(){
-      $(`<div class="col-1"></div>`)
+
+  getHtmlElement() {
+    return $(`<div class="col-1"></div>`);
   }
 }

@@ -1,29 +1,45 @@
+html,
+body,
+.aa,
+.container-fluid,
+#sidebar-wrapper {
+  height: 100%;
+}
+
 .b-tile-item {
   background-image: url("../img/cell/grass-earth.png");
   background-size: 120px;
   border: 2px solid black;
-  min-height: 100px;
+  min-height: 25px;
+  min-width: 25px;
+  max-height: 25px;
+  max-width: 25px;
 }
 
-.b-item {
-  background-size: 120px;
-  border: 2px solid black;
-  min-height: 110px;
-  background-color: rgb(145, 224, 235);
+.b-row {
+  grid-row: 1;
+}
+
+.b-col {
+  grid-column: 1;
 }
 
 .main_board {
-  height: 620px;
-  width: 620px;
+  height: max-content;
+  width: max-content;
   border: 1px solid black;
-  position: absolute;
-  left: -350%;
+  display: grid;
+  position: relative;
 }
 
 .holder {
   margin: 0 auto;
   width: 100px;
   position: relative;
+}
+
+#sidebar-wrapper {
+  background-color: black;
 }
 
 .box_tools {
@@ -38,32 +54,18 @@
   object-fit: cover;
 }
 
-.box_tile {
-  width: 50px;
-  height: 50px;
-  border-radius: 0px;
-}
 .axe {
-  background-image: url("../images/axe.png");
+  background-image: url("../img/tools/axe.png");
 }
 
 .shovel {
-  background-image: url("../images/shovel.png");
+  background-image: url("../img/tools/shovel.png");
 }
 
 .pickaxe {
-  background-image: url("../images/Pickaxe.png");
+  background-image: url("../img/tools/Pickaxe.png");
 }
 
-.box_border_blue {
+.box_tools:hover {
   box-shadow: 0 0 16px 15px blue;
-}
-
-.box_border_red {
-  box-shadow: 0 0 16px 15px red;
-}
-
-.bott {
-  bottom: 1px;
-  position: absolute;
 }
