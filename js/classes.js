@@ -1,14 +1,97 @@
-class WorldBoard {
-  constructor(tiles, weight, height) {}
-}
-
 class Tile {
-  constructor(type, url) {
-    this.type = type;
-    this.url = url;
+  constructor() {
+    this.type;
+    this.dependency;
+    this.url;
   }
 
-  getHtmlElement() {
-    return $(`<div class="col-1"></div>`);
+  checkDependency(type) {
+    return this.dependency.includes(type);
+  }
+
+  getType() {
+    return this.type;
+  }
+}
+
+class Grass extends Tile {
+  constructor() {
+    super();
+    this.type = "grass";
+    this.dependency = ["soil", "grass"];
+    this.url = "../img/tile/grass.png";
+  }
+}
+
+class Stone extends Tile {
+  constructor() {
+    super();
+    this.type = "stone";
+    this.dependency = ["soil", "grass", "stone"];
+    this.url = "../img/tile/stone.png";
+  }
+}
+
+class Soil extends Tile {
+  constructor() {
+    super();
+    this.type = "soil";
+    this.dependency = ["soil", "grass"];
+    this.url = "../img/tile/grass-earth.png";
+  }
+}
+
+class TreeTrunk extends Tile {
+  constructor() {
+    super();
+    this.type = "treeTrunk";
+    this.dependency = ["treeTrunk", "grass"];
+    this.url = "./img/teil";
+  }
+}
+
+class TreeBranch extends Tile {
+  constructor() {
+    this.type = "treeBranch";
+    this.dependency = ["treeTrunk"];
+    this.url = "../img/tile/";
+
+    super(type, dependency, url);
+  }
+}
+
+
+class Tool {
+  constructor() {
+    this.type;
+    this.dependency;
+  }
+
+  checkDependency(type) {
+    return this.dependency.includes(type);
+  }
+}
+
+class PickAxe extends Tool {
+  constructor() {
+    super();
+    this.type = "PickAxe";
+    this.dependency = ["Stone"];
+  }
+}
+
+class Shovel extends Tool {
+  constructor() {
+    super();
+    this.type = "Shovel";
+    this.dependency = ["grass","soil"];
+  }
+}
+
+class Axe extends Tool {
+  constructor() {
+    super();
+    this.type = "Axe";
+    this.dependency = ["treeTrunk"];
   }
 }
