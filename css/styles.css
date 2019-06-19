@@ -1,9 +1,31 @@
-.b-tile-item{
-    background-image: url("../img/cell/grass-earth.png");
-    background-size: 120px;
-    border: 2px solid black;
-    min-height: 100px;
+.b-tile-item {
+  background-image: url("../img/cell/grass-earth.png");
+  background-size: 120px;
+  border: 2px solid black;
+  min-height: 100px;
 }
+
+.b-item {
+  background-size: 120px;
+  border: 2px solid black;
+  min-height: 110px;
+  background-color: rgb(145, 224, 235);
+}
+
+.main_board {
+  height: 620px;
+  width: 620px;
+  border: 1px solid black;
+  position: absolute;
+  left: -350%;
+}
+
+.holder {
+  margin: 0 auto;
+  width: 100px;
+  position: relative;
+}
+
 .box_tools {
   width: 102px;
   height: 102px;
@@ -33,21 +55,15 @@
   background-image: url("../images/Pickaxe.png");
 }
 
-/*
-.border-button-red { /* if selected  tool doesnt match to game */
-/* outline: solid 0px rgb(223, 0, 0); */
-/* transition: outline 0.6s linear; */
-/* border-radius: 20px; */
-
-/*  margin: 0.5em;  Increased margin since the outline expands outside the element 
-  }
-  
-  .border-button-red:hover { outline-width: 5px; } */
-
 .box_border_blue {
   box-shadow: 0 0 16px 15px blue;
 }
 
 .box_border_red {
   box-shadow: 0 0 16px 15px red;
+}
+
+.bott {
+  bottom: 1px;
+  position: absolute;
 }
