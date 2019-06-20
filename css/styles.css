@@ -12,22 +12,14 @@ body,
   border: 2px solid black;
 }
 
-.b-row {
-  /* grid-row: 1; */
-}
-
-.b-col {
-  /* grid-column: 1; */
-}
-
-.main_board {
+#main-board {
   height: max-content;
   width: max-content;
   border: 1px solid black;
   display: grid;
   position: relative;
-  grid-template-columns: repeat(5,30px);
-  grid-template-rows: repeat(5,30px);
+  grid-template-columns: repeat(5, 30px);
+  grid-template-rows: repeat(5, 30px);
 }
 
 .holder {
@@ -40,7 +32,7 @@ body,
   background-color: black;
 }
 
-.box_tools {
+.box-tools {
   width: 102px;
   height: 102px;
   border: 1px solid white;
@@ -50,6 +42,7 @@ body,
   position: relative;
   margin-bottom: 20px;
   object-fit: cover;
+
 }
 
 #axe {
@@ -64,7 +57,7 @@ body,
   background-image: url("../img/tools/Pickaxe.png");
 }
 
-.box_tools:hover {
+.box-tools:hover {
   box-shadow: 0 0 16px 15px blue;
 }
 
@@ -78,25 +71,30 @@ body,
   border-radius: unset;
 }
 
+.tile{
+  background-size: 100px;
+}
+
 .soil {
   background-image: url("../img/tile/soil.png");
 }
 
 .grass {
-  background-image: url("../img/tile/grass_icon.png");
+  background-image: url("../img/tile/grass.png");
 }
 
 .stone {
-  background-image: url("../img/tile/stone-rock.png");
+  background-image: url("../img/tile/stone.png");
 }
 
-.trunck {
-  background-image: url("../img/tile/tree_trunck.png");
+.treeTrunk {
+  background-image: url("../img/tile/treeTrunck.png");
 }
 
-.branch {
-  background-image: url("../img/tile/branch.png");
+.treeBranch {
+  background-image: url("../img/tile/treeBranch.png");
 }
 
-
-
+.sky{
+  background-image: url("../img/tile/sky.png");
+}
