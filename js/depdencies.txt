@@ -1,0 +1,5 @@
+//Dependecies
+      //soil -> grass,stone,tree_trunk,tree_branch
+      //grass->stone,tree_trunk
+      //stone->stone,tree_trunk
+      //tree_truk->tree_trunk,tree_branch
