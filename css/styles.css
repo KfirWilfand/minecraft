@@ -48,7 +48,7 @@ body,
   border: 1px solid white;
   border-radius: 20px;
   margin: 0 auto;
-  top: 50px;
+  top: 10px;
   position: relative;
   margin-bottom: 20px;
   object-fit: cover;
@@ -69,3 +69,36 @@ body,
 .box_tools:hover {
   box-shadow: 0 0 16px 15px blue;
 }
+
+.box_tools_inventory:hover {
+  box-shadow: 0 0 16px 15px green;
+}
+
+.box_inventory {
+  width: 32px;
+  height: 32px;
+  border-radius: unset;
+}
+
+.soil {
+  background-image: url("../img/tile/soil.png");
+}
+
+.grass {
+  background-image: url("../img/tile/grass_icon.png");
+}
+
+.stone {
+  background-image: url("../img/tile/stone-rock.png");
+}
+
+.trunck {
+  background-image: url("../img/tile/tree_trunck.png");
+}
+
+.branch {
+  background-image: url("../img/tile/branch.png");
+}
+
+
+
