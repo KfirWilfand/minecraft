@@ -134,3 +134,24 @@ class Axe extends Tool {
     this.dependency = ["treeTrunk"];
   }
 }
+
+
+// console.log($("#soil-inventory").text());
+
+function AddInventory(inventory){
+  let inventoryCount=parseInt($(inventory).text());
+  inventoryCount++;
+  return inventoryCount;
+}
+
+
+function RemoveInventory(inventory){
+  let inventoryCount=parseInt($(inventory).text());
+  return inventoryCount--;
+}
+
+let inventory_id="#soil-inventory"; //id of the selected inventory to add/remove
+let x=AddInventory(inventory_id);
+x=RemoveInventory(inventory_id);
+
+
