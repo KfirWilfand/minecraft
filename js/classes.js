@@ -1,3 +1,24 @@
+class World {
+  constructor() {
+    this.tailSize = tailSize;
+    this.numOfRows = numOfRows;
+    this.numOfCols = numOfCols;
+    this.tailsMatrix = tailsMatrix;
+  }
+
+  addRow(rowArr) {
+    for (let i = 0; i < this.numOfCols; i++) {
+      tailsMatrix[i].push(rowArr[i]);
+    }
+  }
+
+  addCol(colArr) {
+    tailsMatrix.push(colArr);
+  }
+
+  buildWord() {}
+}
+
 class Tile {
   constructor() {
     this.type;
@@ -11,6 +32,13 @@ class Tile {
 
   getType() {
     return this.type;
+  }
+
+  getHtmlElement() {
+    return $(`<div class="b-row"></div>`).css(
+      "background-image",
+      `url(${this.url})`
+    );
   }
 }
 
@@ -60,7 +88,6 @@ class TreeBranch extends Tile {
   }
 }
 
-
 class Tool {
   constructor() {
     this.type;
@@ -84,7 +111,7 @@ class Shovel extends Tool {
   constructor() {
     super();
     this.type = "Shovel";
-    this.dependency = ["grass","soil"];
+    this.dependency = ["grass", "soil"];
   }
 }
 

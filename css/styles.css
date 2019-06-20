@@ -7,21 +7,17 @@ body,
 }
 
 .b-tile-item {
-  background-image: url("../img/cell/grass-earth.png");
+  background-image: url("../img/tile/grass-earth.png");
   background-size: 120px;
   border: 2px solid black;
-  min-height: 25px;
-  min-width: 25px;
-  max-height: 25px;
-  max-width: 25px;
 }
 
 .b-row {
-  grid-row: 1;
+  /* grid-row: 1; */
 }
 
 .b-col {
-  grid-column: 1;
+  /* grid-column: 1; */
 }
 
 .main_board {
@@ -30,6 +26,8 @@ body,
   border: 1px solid black;
   display: grid;
   position: relative;
+  grid-template-columns: repeat(5,30px);
+  grid-template-rows: repeat(5,30px);
 }
 
 .holder {
@@ -54,15 +52,15 @@ body,
   object-fit: cover;
 }
 
-.axe {
+#axe {
   background-image: url("../img/tools/axe.png");
 }
 
-.shovel {
+#shovel {
   background-image: url("../img/tools/shovel.png");
 }
 
-.pickaxe {
+#pickaxe {
   background-image: url("../img/tools/Pickaxe.png");
 }
 
