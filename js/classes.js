@@ -1,23 +1,35 @@
 class World {
-  constructor() {
+  constructor(tailsMatrix, tailSize) {
     this.tailSize = tailSize;
-    this.numOfRows = numOfRows;
-    this.numOfCols = numOfCols;
     this.tailsMatrix = tailsMatrix;
   }
 
   addRow(rowArr) {
-    for (let i = 0; i < this.numOfCols; i++) {
-      tailsMatrix[i].push(rowArr[i]);
-    }
+    // for (let i = 0; i < this.numOfCols; i++) {
+    //   tailsMatrix[i].push(rowArr[i]);
+    // }
   }
 
   addCol(colArr) {
-    tailsMatrix.push(colArr);
+    // tailsMatrix.push(colArr);
   }
 
-  buildWord() {
-    tailsMatrix()
+  build() {
+    this.tailsMatrix.forEach(rowArr => {
+      rowArr.forEach(tile => {
+        $("#main-board").append(tile.getHtmlElement());
+      });
+    });
+
+    $("#main-board")
+      .css(
+        "grid-template-rows",
+        `repeat(${this.tailsMatrix.length},${this.tailSize}px)`
+      )
+      .css(
+        "grid-template-columns",
+        `repeat(${this.tailsMatrix[0].length},${this.tailSize}px)`
+      );
   }
 }
 
@@ -25,7 +37,6 @@ class Tile {
   constructor() {
     this.type;
     this.dependency;
-    this.url;
   }
 
   checkDependency(type) {
@@ -37,10 +48,7 @@ class Tile {
   }
 
   getHtmlElement() {
-    return $(`<div class="b-row"></div>`).css(
-      "background-image",
-      `url(${this.url})`
-    );
+    return $(`<div class="${this.type} tile"></div>`);
   }
 }
 
@@ -49,7 +57,6 @@ class Grass extends Tile {
     super();
     this.type = "grass";
     this.dependency = ["soil", "grass"];
-    this.url = "../img/tile/grass.png";
   }
 }
 
@@ -58,7 +65,6 @@ class Stone extends Tile {
     super();
     this.type = "stone";
     this.dependency = ["soil", "grass", "stone"];
-    this.url = "../img/tile/stone.png";
   }
 }
 
@@ -67,7 +73,6 @@ class Soil extends Tile {
     super();
     this.type = "soil";
     this.dependency = ["soil", "grass"];
-    this.url = "../img/tile/grass-earth.png";
   }
 }
 
@@ -76,17 +81,22 @@ class TreeTrunk extends Tile {
     super();
     this.type = "treeTrunk";
     this.dependency = ["treeTrunk", "grass"];
-    this.url = "./img/teil";
   }
 }
 
 class TreeBranch extends Tile {
   constructor() {
+    super();
     this.type = "treeBranch";
     this.dependency = ["treeTrunk"];
-    this.url = "../img/tile/";
+  }
+}
 
-    super(type, dependency, url);
+class Sky extends Tile {
+  constructor() {
+    super();
+    this.type = "sky";
+    this.dependency = [];
   }
 }
 
@@ -105,7 +115,7 @@ class PickAxe extends Tool {
   constructor() {
     super();
     this.type = "PickAxe";
-    this.dependency = ["Stone"];
+    this.dependency = ["stone"];
   }
 }
 
