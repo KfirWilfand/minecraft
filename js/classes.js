@@ -16,7 +16,9 @@ class World {
     tailsMatrix.push(colArr);
   }
 
-  buildWord() {}
+  buildWord() {
+    tailsMatrix()
+  }
 }
 
 class Tile {
