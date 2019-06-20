@@ -1,0 +1,28 @@
+Mindcraft:
+
+A little backgrund about Mindcraft:
+
+Minecraft is a sandbox video game originally created by Swedish programmer Markus "Notch" Persson.
+The game allows players to build with a variety of different blocks in a 2D procedurally generated world, requiring creativity from players.
+
+
+Main goal of the game:
+Have fun! but not just,you will have to create your world.
+
+The user will have 3 types of tools:
+a. Axe - for cutting trees
+b. Pickaxe - for mining rocks
+c. Shovel - for digging dirt
+
+your options are to mining:
+Soil
+Grass
+Stones
+Tree trunck
+Tree Branch
+
+The rules of the games are:
+
+Axe can be used for :Tree trunck
+Pickaxe can be used for mining rocks
+Shovel can be used for :Soil & Grass

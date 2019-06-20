@@ -26,8 +26,8 @@ body,
   border: 1px solid black;
   display: grid;
   position: relative;
-  grid-template-columns: repeat(5,30px);
-  grid-template-rows: repeat(5,30px);
+  grid-template-columns: repeat(10, 30px);
+  grid-template-rows: repeat(10, 30px);
 }
 
 .holder {
@@ -64,15 +64,8 @@ body,
   background-image: url("../img/tools/Pickaxe.png");
 }
 
-.box_tools:hover {
-  box-shadow: 0 0 16px 15px blue;
-}
-
-.box_tools_inventory:hover {
-  box-shadow: 0 0 16px 15px green;
-}
-
 .box_inventory {
+  border: 1px solid white;
   width: 32px;
   height: 32px;
   border-radius: unset;
@@ -80,23 +73,37 @@ body,
 
 .soil {
   background-image: url("../img/tile/soil.png");
+  display: inline-block;
+}
+.style_inventory_count {
+  color: white;
+  display: inline-block;
 }
 
 .grass {
   background-image: url("../img/tile/grass_icon.png");
+  display: inline-block;
 }
 
 .stone {
   background-image: url("../img/tile/stone-rock.png");
+  display: inline-block;
 }
 
 .trunck {
   background-image: url("../img/tile/tree_trunck.png");
+  display: inline-block;
 }
 
 .branch {
   background-image: url("../img/tile/branch.png");
+  display: inline-block;
 }
 
+ul {
+  list-style-type: none;
+}
 
-
+.margin-top{
+  margin-top:25%;
+}

@@ -1,73 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Minecraft</title>
+    <link href="./css/reset.css" rel="stylesheet" />
+    <link href="./css/styles.css" rel="stylesheet" />
+    <script src="./lib/js/popper.min.js"></script>
+    <script src="./lib/js/jquery-3.4.1.min.js"></script>
+    <script src="./lib/js/bootstrap.min.js"></script>
+    <link href="./lib/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Minecraft</title>
-  <link href="./css/reset.css" rel="stylesheet" />
-  <link href="./css/styles.css" rel="stylesheet" />
-  <script src="./lib/js/popper.min.js"></script>
-  <script src="./lib/js/jquery-3.4.1.min.js"></script>
-  <script src="./lib/js/bootstrap.min.js"></script>
-  <link href="./lib/css/bootstrap.min.css" rel="stylesheet" />
-</head>
-
-<body>
-  <div class="container-fluid">
-    <div class="row aa justify-content-end">
-      <div class="col-10 d-flex justify-content-center align-items-center">
-        <div class="main_board">
-          <div class="b-tile-item b-row">1</div>
-          <div class="b-tile-item b-row">2</div>
-          <div class="b-tile-item b-row">3</div>
-          <div class="b-tile-item b-row">4</div>
-          <div class="b-tile-item b-row">5</div>
-          <div class="b-tile-item b-col">6</div>
-          <div class="b-tile-item b-col">7</div>
-          <div class="b-tile-item b-col">8</div>
-          <div class="b-tile-item b-col">9</div>
+  <body>
+    <div class="container-fluid">
+      <div class="row aa justify-content-end">
+        <div class="col-10 d-flex justify-content-center align-items-center">
+          <div class="main_board">
+            <div class="b-tile-item b-row">1</div>
+            <div class="b-tile-item b-row">2</div>
+            <div class="b-tile-item b-row">3</div>
+            <div class="b-tile-item b-row">4</div>
+            <div class="b-tile-item b-row">5</div>
+            <div class="b-tile-item b-col">6</div>
+            <div class="b-tile-item b-col">7</div>
+            <div class="b-tile-item b-col">8</div>
+            <div class="b-tile-item b-col">9</div>
+          </div>
         </div>
-      </div>
 
-      <div class="col-2 p-0 justify-content-end">
-        <div id="sidebar-wrapper">
-          <ul class="sidebar-nav">
-            <li>
-              <div class="box_tools" id="pickaxe"></div>
-            </li>
-            <li>
-              <div class="box_tools" id="shovel"></div>
-            </li>
-            <li>
-              <div class="box_tools" id="axe"></div>
-            </li>
-            <li>
-              <div class="box_tools box_tile" id="box_tile"></div>
-            </li>
-            <li>
-              <div class="box_tools box_inventory soil box_tools_inventory"></div>
-            </li>
-            <li>
-              <div class="box_tools box_inventory grass box_tools_inventory"></div>
-            </li>
-            <li>
-              <div class="box_tools box_inventory stone box_tools_inventory"></div>
-            </li>
-            <li>
-              <div class="box_tools box_inventory trunck box_tools_inventory"></div>
-            </li>
-            <li>
-              <div class="box_tools box_inventory branch box_tools_inventory"></div>
-            </li>
-          </ul>
+        <div class="col-2 p-0 justify-content-end">
+          <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+              <li>
+                <div class="box_tools" id="pickaxe"></div>
+              </li>
+              <li>
+                <div class="box_tools" id="shovel"></div>
+              </li>
+              <li>
+                <div class="box_tools" id="axe"></div>
+              </li>
+              <div class="container margin-top">
+                <li>
+                  <div class="box_inventory soil box_tools_inventory"></div>
+
+                  <div class="style_inventory_count">X <span id="soil-inventory">0</span></div>
+                </li>
+                <li>
+                  <div class="box_inventory grass box_tools_inventory"></div>
+                  <div class="style_inventory_count">X <span id="grass-inventory">0</span></div>
+                </li>
+                <li>
+                  <div class="box_inventory stone box_tools_inventory"></div>
+                  <div class="style_inventory_count">X <span id="stone-inventory">0</span></div>
+                </li>
+                <li>
+                  <div class="box_inventory trunck box_tools_inventory"></div>
+                  <div class="style_inventory_count">
+                    X <span id="trunck-inventory">0</span>
+                  </div>
+                </li>
+                <li>
+                  <div class="box_inventory branch box_tools_inventory"></div>
+                  <div class="style_inventory_count">
+                    X <span id="branch-inventory">0</span>
+                  </div>
+                </li>
+              </div>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <script src="./js/sidebar.js"></script>
-</body>
+    <script src="./js/sidebar.js"></script>
+    <script src="./js/classes.js"></script>
 
+  </body>
 </html>
