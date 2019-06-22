@@ -97,7 +97,7 @@ class TreeBranch extends Tile {
   constructor() {
     super();
     this.type = "treeBranch";
-    this.dependency = ["treeTrunk"];
+    this.dependency = ["treeTrunk","treeBranch"];
   }
 }
 
@@ -115,9 +115,15 @@ class Tool {
     this.dependency;
   }
 
-  checkDependency(type) {
-    let type2 = type.substring(0,type.indexOf(" "));
-    return this.dependency.includes(type2);
+  checkDependency(element) {
+    let type = getTileTypeByFullClass(element.getAttribute("class"));
+    let row = parseInt(element.getAttribute("row"));
+    let col = parseInt(element.getAttribute("col"));
+
+    if (!this.dependency.includes(type)) return false;
+    if(tailsMatrix[row-1][col].checkDependency(type)) return false;
+
+    return true;
   }
 
   setToolPermitted() {
@@ -151,7 +157,7 @@ class Shovel extends Tool {
   constructor() {
     super();
     this.type = "shovel";
-    this.dependency = ["grass", "soil"];
+    this.dependency = ["treeBranch","grass", "soil"];
   }
 }
 
@@ -162,20 +168,3 @@ class Axe extends Tool {
     this.dependency = ["treeTrunk"];
   }
 }
-
-// console.log($("#soil-inventory").text());
-
-function AddInventory(inventory) {
-  let inventoryCount = parseInt($(inventory).text());
-  inventoryCount++;
-  return inventoryCount;
-}
-
-function RemoveInventory(inventory) {
-  let inventoryCount = parseInt($(inventory).text());
-  return inventoryCount--;
-}
-
-let inventory_id = "#soil-inventory"; //id of the selected inventory to add/remove
-let x = AddInventory(inventory_id);
-x = RemoveInventory(inventory_id);
