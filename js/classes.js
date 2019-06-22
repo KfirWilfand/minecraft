@@ -15,9 +15,14 @@ class World {
   }
 
   build() {
-    this.tailsMatrix.forEach(rowArr => {
-      rowArr.forEach(tile => {
-        $("#main-board").append(tile.getHtmlElement());
+    this.tailsMatrix.forEach((rowArr, rowIndex) => {
+      rowArr.forEach((tile, colIndex) => {
+        $("#main-board").append(
+          tile
+            .getHtmlElement()
+            .attr("row", rowIndex)
+            .attr("col", colIndex)
+        );
       });
     });
 
@@ -48,8 +53,12 @@ class Tile {
   }
 
   getHtmlElement() {
-    return $(`<div class="${this.type} tile"></div>`);
+    return $(`<div class="${this.type} tile"></div>`).on("click", onClickTile);
   }
+}
+
+function onClickTile() {
+  this.addTo;
 }
 
 class Grass extends Tile {
@@ -107,14 +116,33 @@ class Tool {
   }
 
   checkDependency(type) {
-    return this.dependency.includes(type);
+    let type2 = type.substring(0,type.indexOf(" "));
+    return this.dependency.includes(type2);
+  }
+
+  setToolPermitted() {
+    $(`#${this.type}`).attr(
+      "class",
+      "box-tools box-tools-pick box-tools-pick-permitted"
+    );
+  }
+
+  setToolUnPermitted() {
+    $(`#${this.type}`).attr(
+      "class",
+      "box-tools box-tools-pick box-tools-pick-un-permitted"
+    );
+  }
+
+  setToolRegular() {
+    $(`#${this.type}`).attr("class", "box-tools box-tools-pick");
   }
 }
 
 class PickAxe extends Tool {
   constructor() {
     super();
-    this.type = "PickAxe";
+    this.type = "pickAxe";
     this.dependency = ["stone"];
   }
 }
@@ -122,7 +150,7 @@ class PickAxe extends Tool {
 class Shovel extends Tool {
   constructor() {
     super();
-    this.type = "Shovel";
+    this.type = "shovel";
     this.dependency = ["grass", "soil"];
   }
 }
@@ -130,28 +158,24 @@ class Shovel extends Tool {
 class Axe extends Tool {
   constructor() {
     super();
-    this.type = "Axe";
+    this.type = "axe";
     this.dependency = ["treeTrunk"];
   }
 }
 
-
 // console.log($("#soil-inventory").text());
 
-function AddInventory(inventory){
-  let inventoryCount=parseInt($(inventory).text());
+function AddInventory(inventory) {
+  let inventoryCount = parseInt($(inventory).text());
   inventoryCount++;
   return inventoryCount;
 }
 
-
-function RemoveInventory(inventory){
-  let inventoryCount=parseInt($(inventory).text());
+function RemoveInventory(inventory) {
+  let inventoryCount = parseInt($(inventory).text());
   return inventoryCount--;
 }
 
-let inventory_id="#soil-inventory"; //id of the selected inventory to add/remove
-let x=AddInventory(inventory_id);
-x=RemoveInventory(inventory_id);
-
-
+let inventory_id = "#soil-inventory"; //id of the selected inventory to add/remove
+let x = AddInventory(inventory_id);
+x = RemoveInventory(inventory_id);

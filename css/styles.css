@@ -33,12 +33,12 @@ body,
 }
 
 .box-tools {
-  width: 60px;
-  height: 60px;
-  background-size: 60px;
+  width: 50px;
+  height: 50px;
+  background-size: 50px;
   background-repeat: no-repeat;
   background-position: center;
-  border: 2px solid white;
+  border: 2px solid gray;
   border-radius: 60px;
   margin: 0 auto;
   top: 10px;
@@ -46,9 +46,26 @@ body,
   margin-bottom: 20px;
   object-fit: cover;
 }
+
+.box-tools-pick {
+  width: 70px;
+  height: 70px;
+  background-size: 70px;
+  border: 2px solid white;
+}
+
+.box-tools-pick-permitted {
+  box-shadow: 0 0 10px 5px green;
+}
+
+.box-tools-pick-un-permitted {
+  box-shadow: 0 0 10px 5px red;
+}
+
 ul {
   list-style-type: none;
 }
+
 #axe {
   background-image: url("../img/tools/axe.png");
 }
@@ -57,28 +74,27 @@ ul {
   background-image: url("../img/tools/shovel.png");
 }
 
-#pickaxe {
+#pickAxe {
   background-image: url("../img/tools/Pickaxe.png");
 }
 
-.box_inventory {
+.box-inventory {
   border: 1px solid white;
   width: 32px;
   height: 32px;
   border-radius: unset;
+  display: inline-block;
 }
 
 .tile {
   background-size: 100px;
 }
 
+#inventory-title {
+  color: white;
+}
 .soil {
   background-image: url("../img/tile/soil.png");
-  display: inline-block;
-}
-.style_inventory_count {
-  color: white;
-  display: inline-block;
 }
 
 .grass {
@@ -99,4 +115,9 @@ ul {
 
 .sky {
   background-image: url("../img/tile/sky.png");
+}
+
+.style_inventory_count {
+  color: white;
+  display: inline-block;
 }
