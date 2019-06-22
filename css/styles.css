@@ -86,6 +86,10 @@ ul {
   display: inline-block;
 }
 
+.box-inventory-picked{
+  box-shadow: 0 0 10px 5px blue;
+}
+
 .tile {
   background-size: 100px;
 }
@@ -121,3 +125,9 @@ ul {
   color: white;
   display: inline-block;
 }
+
+.cursor {
+  position: absolute;
+  cursor: none;
+  pointer-events: none;
+ }

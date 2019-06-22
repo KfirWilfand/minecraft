@@ -22,6 +22,7 @@ class World {
             .getHtmlElement()
             .attr("row", rowIndex)
             .attr("col", colIndex)
+            .addClass("b-cell")
         );
       });
     });
@@ -53,7 +54,10 @@ class Tile {
   }
 
   getHtmlElement() {
-    return $(`<div class="${this.type} tile"></div>`).on("click", onClickTile);
+    return $(`<div class="${this.type} tile b-cell"></div>`).on(
+      "click",
+      onClickTile
+    );
   }
 }
 
@@ -97,7 +101,7 @@ class TreeBranch extends Tile {
   constructor() {
     super();
     this.type = "treeBranch";
-    this.dependency = ["treeTrunk","treeBranch"];
+    this.dependency = ["treeTrunk", "treeBranch"];
   }
 }
 
@@ -121,23 +125,21 @@ class Tool {
     let col = parseInt(element.getAttribute("col"));
 
     if (!this.dependency.includes(type)) return false;
-    if(tailsMatrix[row-1][col].checkDependency(type)) return false;
+    if (tailsMatrix[row - 1][col].checkDependency(type)) return false;
 
     return true;
   }
 
   setToolPermitted() {
-    $(`#${this.type}`).attr(
-      "class",
-      "box-tools box-tools-pick box-tools-pick-permitted"
-    );
+    $(`#${this.type}`)
+      .addClass("box-tools-pick-permitted")
+      .removeClass("box-tools-pick-un-permitted");
   }
 
   setToolUnPermitted() {
-    $(`#${this.type}`).attr(
-      "class",
-      "box-tools box-tools-pick box-tools-pick-un-permitted"
-    );
+    $(`#${this.type}`)
+      .addClass("box-tools-pick-un-permitted")
+      .removeClass("box-tools-pick-permitted");
   }
 
   setToolRegular() {
@@ -157,7 +159,7 @@ class Shovel extends Tool {
   constructor() {
     super();
     this.type = "shovel";
-    this.dependency = ["treeBranch","grass", "soil"];
+    this.dependency = ["treeBranch", "grass", "soil"];
   }
 }
 

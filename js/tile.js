@@ -5,13 +5,11 @@ function addInventory(type) {
 }
 
 function removeInventory(type) {
-  if (this.inventoryCount <= 0) return;
+  let inventoryCount = parseInt($(`#${type}-inventory`).text());
+  if (inventoryCount <= 0) return;
 
-  this.inventoryCount = parseInt(
-    $(`.${this.type}.box-inventory > #soil-inventory`).text()
-  );
-  this.inventoryCount--;
-  $(`.${this.type} .box-inventory > #soil-inventory`).text(this.inventoryCount);
+  inventoryCount--;
+  $(`#${type}-inventory`).text(inventoryCount);
 }
 
 function getTileTypeByFullClass(classAttr) {
@@ -19,8 +17,9 @@ function getTileTypeByFullClass(classAttr) {
   return type;
 }
 
+let isInventoryOnPlacement = false;
 $(document).ready(function() {
-  $(".tile")
+  $(".tile.b-cell")
     .mouseover(function(e) {
       $(this).css("border", "1px dashed black");
       pickedTool.checkDependency(e.target)
@@ -33,14 +32,66 @@ $(document).ready(function() {
     })
     .click(function(e) {
       let type = getTileTypeByFullClass(e.target.getAttribute("class"));
+      let row = parseInt(e.target.getAttribute("row"));
+      let col = parseInt(e.target.getAttribute("col"));
 
       if (!pickedTool.checkDependency(e.target)) return;
 
       addInventory(type);
       e.target.setAttribute("class", "sky tile");
 
-      tailsMatrix[parseInt(e.target.getAttribute("row"))][
-        parseInt(e.target.getAttribute("col"))
-      ] = new Sky();
+      tailsMatrix[row][col] = new Sky();
     });
+
+  $(".tile.box-inventory").click(function(e) {
+    let type = getTileTypeByFullClass(e.target.getAttribute("class"));
+    let inventoryCount = parseInt($(`#${type}-inventory`).text());
+    if (inventoryCount <= 0) return;
+
+    isInventoryOnPlacement = true;
+    let pickedInventoryItem = $(this);
+    $(pickedInventoryItem).addClass("box-inventory-picked");
+
+    switch (type) {
+        case "soil":
+          pickedTool = new Soil();
+          break;
+        case "grass":
+          pickedTool = new Grass();
+          break;
+        case "stone":
+          pickedTool = new Stone();
+          break;
+        case "treeTrunk":
+          pickedTool = new TreeTrunk();
+          break;
+        case "treeBranch":
+          pickedTool = new TreeBranch();
+          break;
+      }
+
+    // removeInventory(type);
+
+    $(document)
+      .mousemove(function(e) {
+        if (!isInventoryOnPlacement) return;
+        $(".cursor")
+          .addClass(`${type}`)
+          .show()
+          .css({
+            left: e.clientX,
+            top: e.clientY
+          });
+      })
+      .mousedown(function(e) {
+        let row = parseInt(e.target.getAttribute("row"));
+        let col = parseInt(e.target.getAttribute("col"));
+
+     
+
+        isInventoryOnPlacement = false;
+        $(pickedInventoryItem).removeClass("box-inventory-picked");
+        $(".cursor").hide();
+      });
+  });
 });
