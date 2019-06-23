@@ -44,6 +44,13 @@ $(document).ready(function() {
   });
 
   $(".tile.box-inventory").click(function(e) {
+    inventoryPlacementType = getTileTypeByFullClass(
+      e.target.getAttribute("class")
+    );
+    let inventoryCount = parseInt(
+      $(`#${inventoryPlacementType}-inventory`).text()
+    );
+    if (inventoryCount == 0) return;
     if (isInventoryOnPlacement) {
       cancelTileCursor();
       return;
@@ -53,10 +60,7 @@ $(document).ready(function() {
       e.target.getAttribute("class")
     );
 
-    let inventoryCount = parseInt(
-      $(`#${inventoryPlacementType}-inventory`).text()
-    );
-    if (inventoryCount <= 0) return;
+ 
 
     pickedInventoryItem = $(this);
     $(pickedInventoryItem).addClass("box-inventory-picked");
