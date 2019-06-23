@@ -387,10 +387,10 @@ button:hover {
  */
 .header {
 	text-align: center;
-	padding: 2rem;
+	padding: 0px;
 }
 .header img {
-	max-height: 20rem;
+	max-height: 18rem;
 }
 
 .features .box {

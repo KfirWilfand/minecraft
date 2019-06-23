@@ -1,26 +1,14 @@
-let inventoryPlacementType;
-let pickedInventoryItem;
-let isInventoryOnPlacement = false;
-let tile;
-let isTilePermitToPlacement = false;
-
-function addInventory(type) {
-  let inventoryCount = parseInt($(`#${type}-inventory`).text());
-  inventoryCount++;
-  $(`#${type}-inventory`).text(inventoryCount);
-}
-
-function removeInventory(type) {
-  let inventoryCount = parseInt($(`#${type}-inventory`).text());
-  if (inventoryCount <= 0) return;
-
-  inventoryCount--;
-  $(`#${type}-inventory`).text(inventoryCount);
-}
-
 function getTileTypeByFullClass(classAttr) {
   let type = classAttr.substring(0, classAttr.indexOf(" "));
   return type;
+}
+
+function checkTilePermitToPlacement(row, col) {
+  if (row + 1 >= tailsMatrix.length) return false;
+  if (!tile.checkDependency(tailsMatrix[row + 1][col].type)) return false;
+  if (tailsMatrix[row][col].type != "sky") return false;
+
+  return true;
 }
 
 $(document).ready(function() {
@@ -34,10 +22,8 @@ $(document).ready(function() {
         : pickedTool.setToolUnPermitted();
 
       if (!isInventoryOnPlacement) return;
-      if (
-        tile.checkDependency(tailsMatrix[row + 1][col].type) &&
-        tailsMatrix[row][col].type == "sky"
-      ) {
+
+      if (checkTilePermitToPlacement(row, col)) {
         $(e.target).css("border", "1px dashed green");
         isTilePermitToPlacement = true;
       } else {
@@ -70,59 +56,4 @@ $(document).ready(function() {
         tailsMatrix[row][col] = new Sky();
       }
     });
-
-  $(".tile.box-inventory").click(function(e) {
-    isInventoryOnPlacement = true;
-    inventoryPlacementType = getTileTypeByFullClass(
-      e.target.getAttribute("class")
-    );
-
-    let inventoryCount = parseInt(
-      $(`#${inventoryPlacementType}-inventory`).text()
-    );
-    if (inventoryCount <= 0) return;
-
-    pickedInventoryItem = $(this);
-    $(pickedInventoryItem).addClass("box-inventory-picked");
-    tile;
-
-    switch (inventoryPlacementType) {
-      case "soil":
-        tile = new Soil();
-        break;
-      case "grass":
-        tile = new Grass();
-        break;
-      case "stone":
-        tile = new Stone();
-        break;
-      case "treeTrunk":
-        tile = new TreeTrunk();
-        break;
-      case "treeBranch":
-        tile = new TreeBranch();
-        break;
-    }
-  });
-
-  $(document).mousemove(function(e) {
-    if (!isInventoryOnPlacement) return;
-    $(".cursor")
-      .addClass(`${inventoryPlacementType}`)
-      .show()
-      .css({
-        left: e.clientX,
-        top: e.clientY
-      });
-  });
-
-  $("#main-board").click(function(e) {
-    if (!isInventoryOnPlacement) return;
-    if (!isTilePermitToPlacement) return;
-
-    $(pickedInventoryItem).removeClass("box-inventory-picked");
-    $(".cursor").hide();
-    removeInventory(inventoryPlacementType);
-    isInventoryOnPlacement = false;
-  });
 });
