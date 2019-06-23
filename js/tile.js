@@ -4,13 +4,11 @@ function getTileTypeByFullClass(classAttr) {
 }
 
 function checkTilePermitToPlacement(row, col) {
-  let type = getTileTypeByFullClass(e.target.getAttribute("class"));
-
   if (row + 1 >= tailsMatrix.length) return false;
   if (!tile.checkDependency(tailsMatrix[row + 1][col].type)) return false;
   if (tailsMatrix[row][col].type != "sky") return false;
 
-  return false;
+  return true;
 }
 
 $(document).ready(function() {
