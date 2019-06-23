@@ -4,16 +4,6 @@ class World {
     this.tailsMatrix = tailsMatrix;
   }
 
-  addRow(rowArr) {
-    // for (let i = 0; i < this.numOfCols; i++) {
-    //   tailsMatrix[i].push(rowArr[i]);
-    // }
-  }
-
-  addCol(colArr) {
-    // tailsMatrix.push(colArr);
-  }
-
   build() {
     this.tailsMatrix.forEach((rowArr, rowIndex) => {
       rowArr.forEach((tile, colIndex) => {
